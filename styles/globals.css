@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.receiver {
+    background-color: whitesmoke;
+}
+
+.sender {
+    margin-left: auto;
+    background-color: #dcf8c6;
+}
