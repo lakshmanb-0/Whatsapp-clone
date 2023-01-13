@@ -15,6 +15,7 @@ import firebase from "firebase/compat/app";
 import getRecipientEmail from "../utils/getRecipientEmail";
 import TimeAgo from "timeago-react";
 import { useRef } from "react";
+import Loading from "./Loading";
 
 function ChatScreen({ chat, messages }) {
   const [user] = useAuthState(auth);
@@ -83,6 +84,7 @@ function ChatScreen({ chat, messages }) {
   };
 
   const recipient = recipientSnapshot?.docs?.[0]?.data();
+  if (loading) return <Loading />;
 
   return (
     <main className="w-full flex-1 overflow-scroll h-screen">

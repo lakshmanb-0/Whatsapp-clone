@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Chat from "./Chat";
 import { useRouter } from "next/router";
+import Loading from "./Loading";
 
 function Sidebar() {
   const [user] = useAuthState(auth);
@@ -16,7 +17,7 @@ function Sidebar() {
   const userChatRef = db
     .collection("chats")
     .where("users", "array-contains", user.email);
-  const [chatsSnapshot] = useCollection(userChatRef);
+  const [chatsSnapshot, loading] = useCollection(userChatRef);
 
   const startnewChat = () => {
     const input = prompt(
@@ -46,6 +47,7 @@ function Sidebar() {
     auth.signOut();
     router.push("/login");
   };
+  if (loading) return <Loading />;
 
   return (
     <div className="border-r-2 border-r-slate-50 h-[100vh]">
