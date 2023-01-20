@@ -4,13 +4,13 @@ import Sidebar from "../Components/Sidebar";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Sidebar />
       <Load />
-    </div>
+    </>
   );
 }
